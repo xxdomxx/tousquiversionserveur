@@ -1,0 +1,37 @@
+<html>
+<head>
+<?php
+	session_start();
+	if($_SESSION['utilisateur'])
+	{
+		include("headerconnecter.php");
+	}
+	else
+	{
+		include("header.php");
+	}
+?>
+</head>
+<body>
+<div class="text-center col-md-8 col-md-offset-2">
+	<h3>
+	<?php
+		if(@$_COOKIE['nomidentifiant'])
+		{ 
+			$_nomidentifiant=$_COOKIE['nomidentifiant'];
+			echo "<h3>Bonjour $_nomidentifiant!</h3>";
+		}
+		else
+		{
+		include("presentationcompagnie.txt");
+		}
+		$geterreur= @$_GET['erreur'];
+		if(@$geterreur)
+		{
+			echo "<br><b style='color:red;'>Erreur de connexion veuillez réessayer</b>";	
+		}
+	?>
+	</h3>	
+</div>
+</body>
+</html>

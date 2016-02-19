@@ -1,0 +1,567 @@
+1
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	$date = date("d-m-Y");
+	echo "$date";
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+2
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	include("copyright.txt");
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+3
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	echo "Dernière modification le ";
+	echo date( "d/m/Y à H\hi", filemtime( "3_modi.php" ) );
+	
+	echo "<P> Autre methode: ";	
+	$jour = date("j",filemtime( "3_modi.php" ));
+	$mois = date("n",filemtime( "3_modi.php" ));
+	$annee = date("Y",filemtime( "3_modi.php" ));
+	$heure = date("H\hi",filemtime( "3_modi.php" ));
+	$moisfrancais = array ( 1 => "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre");
+	echo ("Dernière modification le ".$jour." ".$moisfrancais[$mois]." ".$annee." à ".$heure); 
+	/*l'anti slash devant le h */
+	// permet d'afficher h
+	# au lieu de l'heure....
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+4
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	echo $_SERVER["REMOTE_ADDR"]; // getenv("REMOTE_ADDR"); pour apache
+	?>
+</CENTER>
+</BODY>
+</HTML>
+5
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	if($_REQUEST['temps'] == 'beau'){  //utiliser form1.html
+    	echo 'Il fait beau';
+	}
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+form1.html
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+
+<form method="post" action="5_if.php">
+<p>Exemple : Que pensez vous de ce site ?</p>
+<p>Votre nom :<br>
+<input type="text" name="temps" size="40"><br>
+Commentaire :<br>
+<textarea name="texte" cols="40" rows="3"></textarea>
+</p>
+<input type="submit" name="Submit" value="Envoyer">
+</form>
+
+</BODY>
+</HTML>
+
+6
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	if($_REQUEST['temps'] == 'beau'){	//utilise form2.html
+    	echo 'Il fait beau';
+	}
+	else{
+	echo 'Il ne fait pas beau';
+	}
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+form2.html
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+6_if_else.php
+<form method="post" action="6_if_else.php">
+<p>Exemple : Que pensez vous de ce site ?</p>
+<p>Votre nom :<br>
+<input type="text" name="temps" size="40"><br>
+Commentaire :<br>
+<textarea name="texte" cols="40" rows="3"></textarea>
+</p>
+<input type="submit" name="Submit" value="Envoyer">
+</form>
+
+</BODY>
+</HTML>
+
+7
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<TITLE> Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	$nombre=2;
+	echo ($nombre == 1) ? '$nombre est egal a 1' : "$nombre n\'est pas egal a 1";
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+8
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	$nombre=2;		//$nombre="salut";
+	switch($nombre)
+	{
+	case 1:			//case "salut2":
+  	echo "$nombre est egal a 1";  
+	break;
+	case 2:
+  	echo '$nombre est egal a 2';  
+	break;
+	case 3:     		//case "salut":
+  	echo '$nombre est egal a 3';  
+	break;
+	default:
+  	echo '$nombre est inferieur à 1 ou superieur a 3';  
+	break;
+	} 
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+9
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	for ( $i = 1; $i <= 10 ; $i++ )
+	{
+	echo "$i -<BR>";
+	}
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+10
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	$i = 1;
+	while ( $i <= 20 )
+	{
+	echo "$i - ";
+	$i++; // IMPORTANT
+	}
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+11
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	$i = 5; //5
+	do {
+    	echo $i . '<br />';
+    	$i++; // IMPORTANT
+	} while ($i<=4);
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+12
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	//echo "Avec HTTP_USER_AGENT : $HTTP_USER_AGENT<br>";
+	//ne fonctionne pas avec notre version de php?
+	//ne fonctionne pas avec windows et isapi
+	echo getenv("REMOTE_ADDR")."<P>";
+	//Avec windows et ISAPI
+	echo $_SERVER["REMOTE_ADDR"]."<P>";
+	//echo getenv('OS'); //non
+	echo $_SERVER["SERVER_SOFTWARE"]."<P>";
+	echo $_SERVER["SERVER_ADMIN"]."<P>";
+	//echo getenv('PROCESSOR_IDENTIFIER'); //non
+	//echo "Avec getenv() : ".getenv("REMOTE_ADDR");
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+13
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<h4>Merci <?php echo $_REQUEST['nom'];?></h4>
+<?php
+  //form3.html
+  echo '<p>Votre commentaire :', $_REQUEST['texte'],'</p>';
+?>
+</CENTER>
+</BODY>
+</HTML>
+
+form3.html
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+13_form1.php
+<form method="post" action="13_form1.php">
+<p>Exemple : Que pensez vous de ce site ?</p>
+<p>Votre nom :<br>
+<input type="text" name="nom" size="40"><br>
+Commentaire :<br>
+<textarea name="texte" cols="40" rows="3"></textarea>
+</p>
+<input type="submit" name="Submit" value="Envoyer">
+</form>
+
+</BODY>
+</HTML>
+
+14
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<?php
+// si les champs sont remplis ----form4.html
+if(!empty($_REQUEST['nom']) && !empty($_REQUEST['texte'])){
+  echo '<h4>Merci ', htmlentities($_REQUEST['nom']),'</h4>';
+  echo '<p>Votre commentaire : ';
+  echo htmlentities($_REQUEST['texte']),'</p>';
+}else{
+  echo '<h4>Erreur !</h4>';
+  echo '<p>Vous devez remplir correctement tous les champs</p>';
+}
+?>
+</CENTER>
+</BODY>
+</HTML>
+
+form4.html
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+14_form2.php
+<form method="post" action="14_form2.php">
+<p>Exemple : Que pensez vous de ce site ?</p>
+<p>Votre nom :<br>
+<input type="text" name="nom" size="40"><br>
+Commentaire :<br>
+<textarea name="texte" cols="40" rows="3"></textarea>
+</p>
+<input type="submit" name="Submit" value="Envoyer">
+</form>
+
+</BODY>
+</HTML>
+
+15
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<?php
+$a1 = array("un chien","deux chien","trois chien","nous irons au bois chien");
+$a2 = array(1 => "un chat","deux chat","trois chat","nous irons au bois chat"); 
+// pour commencer à 1
+$a3 = array(1 => "un",2 => "deux",3 => "trois",4 => "nous irons au bois");
+while(list($cle,$val) = each($a3))
+{
+ echo "$cle : $val<br>";
+}
+reset($a3);
+while(list($cle,$val) = each($a3))
+{
+ echo "$cle : $val<br>";
+}
+// Sans afficher l'indice
+foreach($a2 as $val)
+{
+ echo "$val<br>";
+}
+// En affichant l'indice
+foreach($a1 as $cle => $val)
+{
+ echo "$cle : $val<br>";
+}
+?>
+</CENTER>
+</BODY>
+</HTML>
+
+16
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<?php
+ $tableau = array(1 => 1, 4, 2);
+rsort($tableau);
+while(list($cle,$val) = each($tableau))
+{
+ echo "$cle : $val<br>";
+}
+?>
+</CENTER>
+</BODY>
+</HTML>
+
+17
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<?php
+$page = ""; //déclarer pour windows
+ $fp = fopen("form4.html","r"); //lecture du fichier
+while (!feof($fp)) { //on parcoure toutes les lignes
+ echo fgets($fp, 4096); // lecture du contenu de la ligne
+}
+//$titre = eregi("<title>(.*)</title>",$page,$regs); //on isole le titre
+//echo $regs[1];
+fclose($fp);
+?>
+</CENTER>
+</BODY>
+</HTML>
+
+form4.html
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+14_form2.php
+<form method="post" action="14_form2.php">
+<p>Exemple : Que pensez vous de ce site ?</p>
+<p>Votre nom :<br>
+<input type="text" name="nom" size="40"><br>
+Commentaire :<br>
+<textarea name="texte" cols="40" rows="3"></textarea>
+</p>
+<input type="submit" name="Submit" value="Envoyer">
+</form>
+
+</BODY>
+</HTML>
+
+18
+﻿<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<?php  //form5.html
+$nom = $_REQUEST['nom']; //'nom'
+$email = $_REQUEST['email'];
+if($fp=fopen("php_8_fichier.txt","a")){ /* ouverture du fichier en écriture */ 
+  fputs($fp, "\n"); // on va a la ligne
+  fputs($fp, "$nom|$email"); // on écrit le nom et email dans le fichier
+  fclose($fp);
+  echo "nom: $nom Email: $email";
+  echo "<BR>";
+  echo strlen($nom);
+  echo " lettre dans le nom<BR>";
+  echo " enregistrement réussis";
+  }
+  else{ // L'ouverture a échouée
+  echo "Ouverture du fichier impossible";
+  exit();
+  }
+?>
+</CENTER>
+</BODY>
+</HTML>
+
+form5.html
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+18_fichier2.php
+<form method="post" action="18_fichier2.php">
+<p>Exemple : Que pensez vous de ce site ?</p>
+<p>Votre nom :<br>
+<input type="text" name="nom" size="40"><br>
+Commentaire :<br>
+<p>Votre E=-Mail :<br>
+<input type="text" name="email" size="40"><br>
+</p>
+<input type="submit" name="Submit" value="Envoyer">
+</form>
+
+</BODY>
+</HTML>
+
+19
+<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+	if (file_exists("php_8_fichier.txt"))
+    	$fp = fopen("php_8_fichier.txt", "r"); // le fichier existe, on l'ouvre
+	else{ // le fichier n'existe pas
+    	echo "Fichier introuvable !<br>Importation stoppée.";
+    	exit();
+	}
+	while (!feof($fp)){ // On parcours le fichier
+    	$ligne = fgets($fp,4096); // On se déplace d'une ligne
+    	$liste = explode("|",$ligne); // Champs séparés par |, on en fait un tableau
+    	$nom = $liste[0];
+    	$email = $liste[1];
+    	echo "nom: $nom &nbsp;&nbsp;&nbsp; email: $email<br>";
+}
+fclose($fp); // Fermeture du fichier
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+
+php_8_fichier.txt
+
+Mers|boba@hotmail.com
+
+Coyotte|Coyotte@ee.fr
+Coyotte3|Coyotte@ee.fr3
+
+Goldorak|golgote@gigi
+|
+gtgtg|gtgtg
+Bus|gerome@steelers.com
+Mers|mers@mers.com
+coco le clown|coco@hotmail.com
+DeMers|DeMers@hotmail.com
+lulu|lulu@jiji.com
+Bingo|bibgo@titi.com
+
+20
+﻿<HTML>
+<HEAD>
+<TITLE>Fichier de test</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+	<?php
+ 	$fichier = "php_8_fichier.txt";
+	if (file_exists($fichier)) { // on vérifie que le fichier existe
+  		echo $fichier;
+		if ($tableau = file($fichier)) { // ouverture du fichier, dans un tableau
+    			echo $tableau;
+			while(list(,$val)=each($tableau)){
+				echo $val; // affichage de chaque ligne du fichier
+    			}
+		}
+		else {
+			echo "Erreur, le fichier n'a pas pu être ouvert.";
+		}
+	}
+	else {
+		echo "Fichier introuvable !";
+	}
+	?>
+</CENTER>
+</BODY>
+</HTML>
+
+
+

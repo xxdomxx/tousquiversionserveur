@@ -1,0 +1,46 @@
+<html>
+<head>
+<?php
+	include("header.php");
+?>
+</head>
+<body>
+	<div class="text-center col-md-4 col-md-offset-4">
+	<form method="post" action="validerinscription.php">
+		<h2>Inscription</h2>
+		<h4>Nom d'utilisateur:</h4>
+		<input type="text" size="25" name="nomutil" class="form-control" required/><br>
+		<h4>Mot de passe:</h4>
+		<input type="password" size="25" name="mdp" class="form-control" required/><br>
+		<h4>Vérification mot de passe:</h4>
+		<input type="password" size="25" name="mdpverif" class="form-control" required/><br>
+		<h4>Prénom:</h4>
+		<input type="text" size="25" name="prenom" class="form-control" required/><br>
+		<h4>Nom:</h4>
+		<input type="text" size="25" name="nom" class="form-control" required/><br>
+		<h4>Courriel:</h4>
+		<input type="text" size="40" name="courriel" class="form-control" required/><br>
+		<button type="submit" name="submit" class="btn btn-default">S'inscrire</button>
+	</form>
+	<?php
+		$geterreur= @$_GET['erreur'];
+		
+		switch($geterreur)
+		{
+			case 1:$champserreur="Courriel";
+			break;
+			case 2:$champserreur="Mot de passe";
+			break;
+			case 3:$champserreur="Mot de passe et Courriel";
+			break;
+			default: $champserreur="t'es un petit comique!!!";
+		}
+		if(@$geterreur)
+		{
+			echo "<b>Le ou les champs <b style='color:red;'>$champserreur</b> sont invalident.<b>";	
+		}
+	?>
+	</div>
+
+</body>
+</html>

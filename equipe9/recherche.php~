@@ -1,0 +1,28 @@
+<html>
+<head>
+<?php
+	include("header.php");
+?>
+</head>
+<body>
+	<div class="text-center col-md-4 col-md-offset-4">
+	<form method="post" action="recherche.php">
+		<p>Recherche: <input type="text" name="motclef" class="form-control"/>
+		Categorie:
+		<select  class="form-control col-md-1">
+			<option name="categorie" value="all">Toutes les catégories</option>
+			<option name="categorie" value="voiture">Voiture</option>
+			<option name="categorie" value="nourriture">Nourriture</option>
+			<option name="categorie" value="sport">Sport</option>
+			<option name="categorie" value="mobilier">Mobilier</option>
+			<option name="categorie" value="animaux">Animaux</option>
+		</select>
+		<br>Prix: <br>
+		<input type="text" size="10" maxlength="10" class="form-control"/> à <input type="text" size="10" maxlength="10"class="form-control"/>
+		</p>
+		<input class="btn btn-default" type="submit" name="Submit" value="Rechercher"/>
+	</form>
+	</div>
+</body>
+</html>
+

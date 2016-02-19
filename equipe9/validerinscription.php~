@@ -1,0 +1,58 @@
+<html>
+<head></head>
+<body>
+<?php
+
+	$nom=$_REQUEST['nom'];
+	$prenom=$_REQUEST['prenom'];
+	$courriel = $_REQUEST['courriel'];
+	$mdp= $_REQUEST['mdp'];
+	$mdpverif= $_REQUEST['mdpverif'];
+	$nomutil= $_REQUEST['nomutil'];
+	$erreurcourriel=false;
+	$erreurmdp=false;
+	$erreur=0;
+	
+
+
+	if(!filter_var($courriel, FILTER_VALIDATE_EMAIL))
+  	{
+  		$erreurcourriel=true;
+		$erreur=$erreur+1;
+  	}
+	if($mdp!=$mdpverif)
+	{
+		$erreurmdp=true;
+		$erreur=$erreur+2;
+	}
+	if($erreurcourriel===false and $erreurmdp===false)
+	{
+		
+		if(@mysql_connect("localhost","root","admin123") && @mysql_select_db("tousquishop"))
+			{
+				$query = "INSERT INTO utilisateur(username,mdputil,prenomutil,nomutil,courrielutil) VALUES('$nomutil','$mdp', '$prenom','$nom','$courriel')"; 
+				$result = mysql_query($query); 	
+				if (!$result) {
+    					echo 'Requête invalide : '.mysql_error().'<br>';
+					$erreur=4;
+					header("Location:inscription.php?erreur=$erreur");
+				}
+				else
+				{
+					setcookie("nomidentifiant",$nomutil,time()+365*24*3600);
+					header("Location:index.php");
+				}
+			}
+			else
+			{
+				echo "Impossible de se connecter à la base de données";
+			}
+			mysql_close();
+	}
+	else
+	{
+		header("Location:inscription.php?erreur=$erreur");
+	}
+?>
+</body>
+</html>
